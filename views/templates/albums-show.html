@@ -26,13 +26,25 @@
       <li class="list-group-item">
         <h4 class='inline-header'>Songs:</h4>
         <div ng-repeat="song in albumsShowCtrl.album.songs">
-        ({{song.trackNumber}}){{song.name}}</div>
+          <button class='btn btn-danger' ng-click="albumsIndexCtrl.deleteAlbum(album)"><span class="glyphicon glyphicon-remove"></span> </button>
+          <button class='btn btn-info' ng-hide="editing" ng-click="editing = true"><span class="glyphicon glyphicon-pencil"> </button>
+          <button class='btn btn-success' ng-show="editing" ng-click="albumsIndexCtrl.editAlbum(album); editing = false"><span class="glyphicon glyphicon-ok"></button>
+        ({{song.trackNumber}}) {{song.name}}</div>
         <!-- <span>{{albumsShowCtrl.album.songs}}</span> -->
 
       </li>
 
 
+      <li class="list-group-item">
+          <h4 class='inline-header'>Add new songs:</h4> <br>
+          <span ng-hide="editing">{{song.name}}</span>
+          <input ng-model="albumsShowCtrl.newSong.trackNumber" placeholder="Track number" type="number" class="form-control input-md">
+          <input ng-model="albumsShowCtrl.newSong.name" placeholder="Track name" type="text" class="form-control input-md">
+          <button class='btn btn-success' ng-click="albumsShowCtrl.createSong()"><span class="glyphicon glyphicon-plus"></span> Add New Song</button>
 
+
+
+      </li>
 
 
 
